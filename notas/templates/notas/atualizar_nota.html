@@ -1,0 +1,22 @@
+<!-- O codigo permite ao usuário editar uma nota e oferece uma opção para salvar as alterações ou voltar para a lista de notas. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Nota</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Nota</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Salvar</button>
+        </form>
+        <a href="{% url 'listar_notas' %}">Voltar</a>
+    </div>
+</body>
+</html>
+

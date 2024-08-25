@@ -1,0 +1,20 @@
+<!-- O codigo solicita a confirmação do usuário para excluir uma nota específica e oferece a opção de confirmar ou cancelar a ação. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excluir Nota</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Excluir Nota</h1>
+        <p>Tem certeza que deseja excluir "{{ nota.titulo }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirmar</button>
+        </form>
+        <a href="{% url 'listar_notas' %}">Cancelar</a>
+    </div>
+</body>
+</html>

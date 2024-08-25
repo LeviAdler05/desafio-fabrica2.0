@@ -1,0 +1,27 @@
+<!--  O codigo  exibe uma lista de notas com links para adicionar novas notas, editar e excluir notas existentes, e mostra detalhes como o título e a data de criação de cada nota. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notas</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Notas</h1>
+        <a href="{% url 'adicionar_nota' %}">Adicionar Nova Nota</a>
+        <ul>
+            {% for nota in notas %}
+                <li>
+                    <strong>{{ nota.titulo }}</strong> - {{ nota.criado_em }}
+                    <div class="actions">
+                        <a href="{% url 'atualizar_nota' nota.pk %}">Editar</a>
+                        <a href="{% url 'remover_nota' nota.pk %}">Excluir</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- O codigo cria uma página HTML para adicionar uma nova nota em uma aplicação Django.
+Ele também inclui um formulário que envia dados para o servidor, tem até proteção CSRF e um botão para salvar.
+Também inclui um link para voltar à lista de notas e carrega um arquivo CSS para estilizar a página. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Nota</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Adicionar Nota</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Salvar</button>
+        </form>
+        <a href="{% url 'listar_notas' %}">Voltar</a>
+    </div>
+</body>
+</html>
